@@ -29,6 +29,7 @@ services.AddSingleton<IConfiguration>(configuration);
 services.AddScoped<IWeatherService, WeatherService>();
 services.AddScoped<IWeatherApiClient, WeatherApiClient>();
 services.AddSingleton<ICityRepository, SqlCityRepository>();
+services.AddSingleton<IWeatherRecordRepository, SqlWeatherRecord>();
 
 var provider = services.BuildServiceProvider();
 
@@ -45,7 +46,6 @@ var result = await weatherService.Fetch();
 Console.WriteLine("result.Count:" + result.Count);//we synchonize here
 foreach (var city in result.OrderBy(city => city.CityName))
 {
-    weatherRepository.Create(city);
-    Console.WriteLine(city.Temperature + " " + city.CityName + " " + city.Description);
+    Console.WriteLine(city.CityName + " " + city.WeatherRecords[0].WeatherDate + " " + city.WeatherRecords[0].Temperature);
 }
 Console.WriteLine("vjbdifjb");

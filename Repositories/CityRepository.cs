@@ -57,8 +57,18 @@ public class CityRepository : ICityRepository
         new City { Id = 49, Name = "Wellington" },
         new City { Id = 50, Name = "Reykjavik" }
     };
-    public List<City> Read()
+    public Task<List<City>> Read()
     {
-        return _cities;
+        return Task.FromResult(_cities);
+    }
+
+    public Task Create(WeatherRecord weatherRecord)
+    {
+        return Task.CompletedTask;
+    }
+
+    public Task Update()
+    {
+        return Task.CompletedTask;
     }
 }

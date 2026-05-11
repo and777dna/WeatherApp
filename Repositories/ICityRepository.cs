@@ -4,5 +4,7 @@ namespace WeatherApp.Repositories;
 
 public interface ICityRepository
 {
-    public List<City> Read();
+    public Task<List<City>> Read();
+    public Task Create(WeatherRecord weatherRecord);
+    public Task Update();
 }

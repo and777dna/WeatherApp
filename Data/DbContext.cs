@@ -11,6 +11,7 @@ public class WeatherDbContext : DbContext
     }
     
     public DbSet<City> Cities { get; set; }
+    public DbSet<WeatherRecord> WeatherRecords { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
